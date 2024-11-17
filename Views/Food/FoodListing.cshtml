@@ -1,0 +1,61 @@
+﻿ @model List<Food>
+ 
+
+ <h1>List of Food</h1>
+<div style="text-align: right;">
+	<form asp-controller="Food" asp-action="AddFood">
+		<button type="submit" class="btn btn-primary">Add New Food</button>
+	</form>
+</div>
+<table id="food-Table" class="table" align="center">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>
+			Food Name
+			</th>
+			<th>
+			Food Price
+			</th>
+			<th>
+			Food Category
+			</th>
+			<th>
+			Edit
+			</th>
+			<th>
+				Delete
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var Food in Model)
+		{
+			<tr>
+				<td>
+					@Food.FoodId
+				</td>
+				<td>
+					@Food.FoodName
+				</td>
+				<td>
+					@Food.FoodPrice
+				</td>
+				<td>
+					@Food.FoodCategoryId
+				</td>
+				<td>
+					<a asp-controller="Food" asp-action="EditFood" asp-route-id="@Food.FoodId">
+					<button type="submit" class="btn btn-primary">Edit</button>
+					</a>
+				</td>
+				<td>
+					<a asp-controller="Food" asp-action="DeleteFood" asp-route-id="@Food.FoodId">
+					<button type="submit" class="btn btn-primary">Delete</button>
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+
+</table>

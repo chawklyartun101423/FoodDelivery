@@ -1,0 +1,26 @@
+﻿@model Food
+
+<h2>Edit Food</h2>
+<form asp-controller="Food" asp-action="Update" method="post">
+	<input type="hidden" asp-for="@Model.FoodId"/>
+	<div class="mt-3">
+		<label class="form-label">Food Name</label>
+		<input type="text" class="form-control" id="foodName" asp-for="@Model.FoodName" />
+	</div>
+
+	<div class="mt-3">
+		<label class="form-label">Food Price</label>
+		<input type="text" class="form-control" id="foodPrice" asp-for="@Model.FoodPrice" />
+	</div>
+
+	<div class="mt-3">
+		<label class="form-label">Food Category</label>
+		<input type="text" class="form-control" id="foodCategory" asp-for="@Model.FoodCategoryId" />
+	</div>
+
+	<div class="mt-3">
+		<button type="submit" class="btn btn-primary">Update</button>
+		<button type="submit" class="btn btn-primary" asp-controller="Food" asp-action="FoodListing">Back</button>
+	</div>
+
+</form>
