@@ -34,6 +34,7 @@ namespace FoodDelivery.Service
             var fcl = _context.FoodCategories.ToList();
             return fcl;
         }
+
         public int UpdateFood(Food food)
         {
             var isExistFood = _context.Foods.Any(x => x.FoodId == food.FoodId);
