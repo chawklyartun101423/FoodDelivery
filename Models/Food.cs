@@ -14,7 +14,7 @@ namespace FoodDelivery.Models
 		public string? FoodName { get; set; }
 
 		[Column("foodPrice")]
-		public int FoodPrice {  get; set; }
+		public decimal? FoodPrice {  get; set; }
 
 		[Column("foodCategoryId")]
 		public int FoodCategoryId {  get; set; }

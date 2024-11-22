@@ -1,4 +1,4 @@
-﻿@model Food
+﻿@model FoodViewModel
 
 <h2>Edit Food</h2>
 <form asp-controller="Food" asp-action="Update" method="post">
@@ -13,10 +13,25 @@
 		<input type="text" class="form-control" id="foodPrice" asp-for="@Model.FoodPrice" />
 	</div>
 
+	<!-- Food Category -->
 	<div class="mt-3">
+		<label class="form-label" for="foodCategory">Food Category</label>
+		<!-- Assuming you want to use a dropdown for categories -->
+		<select class="form-control" id="foodCategory" asp-for="FoodCategoryId">
+			<option selected="selected" value="@Model.CategoryName"></option>
+			<option value="">Select Category</option>
+			<!-- Example of category options (populate dynamically from the server) -->
+			@* @foreach (var category in Model.FoodCategories)
+			{
+				<option value="@category.">@category.CategoryName</option>
+			} *@
+		</select>
+	</div>
+
+	@* <div class="mt-3">
 		<label class="form-label">Food Category</label>
 		<input type="text" class="form-control" id="foodCategory" asp-for="@Model.FoodCategoryId" />
-	</div>
+	</div> *@
 
 	<div class="mt-3">
 		<button type="submit" class="btn btn-primary">Update</button>

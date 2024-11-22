@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Dashboard</title>
+    
+    <partial name="/Views/Shared/AdminLTE/_Styles.cshtml" />
+    @RenderSection("TestSectionForStyle", required: false)
+    
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        </div>
+
+       <partial name="/Views/Shared/AdminLTE/_Header.cshtml"/>
+       <partial name="/Views/Shared/AdminLTE/_MainNavigation.cshtml"/>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /.content-wrapper -->
+        <partial name="/Views/Shared/AdminLTE/_Footer.cshtml" />
+
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <partial name="/Views/Shared/AdminLTE/_Scripts.cshtml" />
+</body>
+</html>

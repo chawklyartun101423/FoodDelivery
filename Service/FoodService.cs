@@ -20,6 +20,7 @@ namespace FoodDelivery.Service
             return result;
         }
         public List<Food> GetFoodList()
+
         { //retrieving Food list from Database
             var fl = _context.Foods.ToList();
             //    var foods = _context.Foods
@@ -63,6 +64,9 @@ namespace FoodDelivery.Service
             }
             return null;
         }
+
+
+
         public int DeleteFood(int FoodId)
         {
             var isExistFood = _context.Foods.Any(x => x.FoodId == FoodId);

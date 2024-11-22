@@ -1,7 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "/Views/Shared/AdminLTE/_AdminLTELayout.cshtml";
 }
 
+@section TestSectionForStyle {
+
+}
+
+<style>
+    body {
+        background: red !important;
+    }
+</style>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

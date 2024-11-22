@@ -1,6 +1,9 @@
-﻿ @model List<Food>
- 
+﻿@model List<Food>
 
+@{
+	ViewData["Title"] = "Home Page";
+	Layout = "/Views/Shared/AdminLTE/_AdminLTELayout.cshtml";
+}
  <h1>List of Food</h1>
 <div style="text-align: right;">
 	<form asp-controller="Food" asp-action="AddFood">
