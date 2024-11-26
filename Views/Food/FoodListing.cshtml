@@ -2,13 +2,82 @@
 
 @{
 	ViewData["Title"] = "Home Page";
-	Layout = "/Views/Shared/AdminLTE/_AdminLTELayout.cshtml";
+	Layout = "/Views/Shared/TemplateLayout/_MainLayout.cshtml";
 }
- <h1>List of Food</h1>
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="text-center col-lg-12">
+			<h2>Popular Foods</h2>
+		</div>
+		<div class="col-lg-12">
+			<div class="food__category d-flex align-items-center justify-content-center gap-4">
+				@* <button type="button" class="all__btn gap-2  @(Model.ActiveCategory == 0 ? "foodBtnActive" : "") "
+						onclick="getPagination()">
+					All
+				</button> *@
+				@foreach (var item in Model)
+				{
+					string imagePath = $"assets/img/food-category/{item.FoodCategoryId}.png";
+				
+						<img src="@(imagePath)"
+							 alt="">@item.FoodName
+				
+				}
+			</div>
+		</div>
+
+	
+
+    @foreach (var item in Model)
+    {
+        string name = item.FoodName;
+        string img = $"assets/img/food/{item.FoodId}.jpg";
+        string display = (string.IsNullOrEmpty(name.Trim()) ||
+                          name.ToLower().Contains(""?.ToLower() ?? string.Empty)) ? "" : "display : none;";
+
+        <div class="mt-5 col-6 col-sm-6 col-md-4 col-lg-3" style="display:block">
+            <div class="product__item">
+                <div class="product__img">
+                    <img src="@img"
+                         alt="product-img" class="w-50">
+                </div>
+                <div class="product__content">
+                    <h5 style="height:47px;">
+                        <a href="javascript:void(0);">
+                            @name
+                        </a>
+                    </h5>
+                    <div class=" d-flex align-items-center justify-content-between ">
+                        <span class="product__price">
+                            $@item.FoodPrice
+                        </span>
+                        <button type="button" class="addTOCart__btn" onclick="addToCard('@item.FoodId', 1)">
+                            Add
+                            to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+		
+		
+	</div>
+</div>
+
+
+
+ @* <h1>List of Food</h1>
 <div style="text-align: right;">
+
 	<form asp-controller="Food" asp-action="AddFood">
 		<button type="submit" class="btn btn-primary">Add New Food</button>
 	</form>
+
 </div>
 <table id="food-Table" class="table" align="center">
 	<thead>
@@ -27,7 +96,7 @@
 			Edit
 			</th>
 			<th>
-				Delete
+			Delete
 			</th>
 		</tr>
 	</thead>
@@ -61,4 +130,4 @@
 		}
 	</tbody>
 
-</table>
+</table> *@

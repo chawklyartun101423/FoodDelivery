@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+
+    <title>Food Delivery</title>
+    <base href="/"/>
+    <partial name="/Views/Shared/TemplateLayout/_Styles.cshtml" />
+</head>
+
+<body>
+    <partial name="/Views/Shared/TemplateLayout/_Header.cshtml" />
+    <partial name="/Views/Shared/TemplateLayout/_HeroSection.cshtml"/>
+    <partial name="/Views/Shared/TemplateLayout/_FoodTypeCards.cshtml" />
+    <partial name="/Views/Shared/TemplateLayout/_ServiceSection.cshtml" />
+    <div class="content-wrapper">
+        @RenderBody()
+    </div>
+    <partial name="/Views/Shared/TemplateLayout/_DeliverySection.cshtml" />
+    <partial name="/Views/Shared/TemplateLayout/_Footer.cshtml" />
+</body>
+</html>
