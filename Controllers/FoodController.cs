@@ -19,6 +19,10 @@ namespace FoodDelivery.Controllers
 			var foodList= _foodService.GetFoodList();
 			return View(foodList);
 		}
+		public IActionResult Cart()
+		{
+			return View();
+		}
 		public IActionResult AddFood()
 		{
             var model = new FoodViewModel

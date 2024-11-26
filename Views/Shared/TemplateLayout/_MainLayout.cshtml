@@ -9,18 +9,22 @@
 
     <title>Food Delivery</title>
     <base href="/"/>
-    <partial name="/Views/Shared/TemplateLayout/_Styles.cshtml" />
+    @await Html.PartialAsync("/Views/Shared/TemplateLayout/_Styles.cshtml")
+    @*<partial name="/Views/Shared/TemplateLayout/_Styles.cshtml" /> *@
 </head>
 
 <body>
-    <partial name="/Views/Shared/TemplateLayout/_Header.cshtml" />
+    @await Html.PartialAsync("/Views/Shared/TemplateLayout/_Header.cshtml")
+
+    @*<partial name="/Views/Shared/TemplateLayout/_Header.cshtml" />
     <partial name="/Views/Shared/TemplateLayout/_HeroSection.cshtml"/>
     <partial name="/Views/Shared/TemplateLayout/_FoodTypeCards.cshtml" />
-    <partial name="/Views/Shared/TemplateLayout/_ServiceSection.cshtml" />
+    <partial name="/Views/Shared/TemplateLayout/_ServiceSection.cshtml" /> *@
     <div class="content-wrapper">
         @RenderBody()
     </div>
-    <partial name="/Views/Shared/TemplateLayout/_DeliverySection.cshtml" />
-    <partial name="/Views/Shared/TemplateLayout/_Footer.cshtml" />
+    @await Html.PartialAsync("/Views/Shared/TemplateLayout/_Footer.cshtml")
+    @* <partial name="/Views/Shared/TemplateLayout/_DeliverySection.cshtml" />
+    <partial name="/Views/Shared/TemplateLayout/_Footer.cshtml" /> *@
 </body>
 </html>

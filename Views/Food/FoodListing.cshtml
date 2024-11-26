@@ -2,9 +2,12 @@
 
 @{
 	ViewData["Title"] = "Home Page";
-	Layout = "/Views/Shared/TemplateLayout/_MainLayout.cshtml";
+	Layout = LayoutService.GetLayout();
 }
 
+@await Html.PartialAsync("/Views/Shared/TemplateLayout/HeroSection.cshtml")
+@await Html.PartialAsync("/Views/Shared/TemplateLayout/FoodTypeCards.cshtml")
+@await Html.PartialAsync("/Views/Shared/TemplateLayout/ServiceSection.cshtml")
 
 
 <div class="container">
@@ -69,7 +72,7 @@
 	</div>
 </div>
 
-
+@await Html.PartialAsync("/Views/Shared/TemplateLayout/DeliverySection.cshtml")
 
  @* <h1>List of Food</h1>
 <div style="text-align: right;">
