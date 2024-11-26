@@ -58,8 +58,7 @@
                             $@item.FoodPrice
                         </span>
                         <button type="button" class="addTOCart__btn" onclick="addToCard('@item.FoodId', 1)">
-                            Add
-                            to Cart
+                            Add to Cart
                         </button>
                     </div>
                 </div>
@@ -73,6 +72,27 @@
 </div>
 
 @await Html.PartialAsync("/Views/Shared/TemplateLayout/DeliverySection.cshtml")
+
+
+@section Scripts{
+<script>
+function addToCart(foodId,qty)
+{
+$.ajax({
+url:
+type:
+dataType:
+data:{ foodId:foodId,qty : qty},
+success: function (count)
+{
+$('#cart_count').text(count)
+},
+error function (err){
+console.error(err);
+}
+	
+</script>
+}
 
  @* <h1>List of Food</h1>
 <div style="text-align: right;">
