@@ -1,0 +1,18 @@
+﻿<script>
+	function deleteItemFromCard(foodId) {
+
+		$.ajax({
+			url: "/Food/DeleteFoodFromCart",
+			type: "POST",
+			dataType: "json",
+			data: { foodId, foodId },
+			success: function (result) {
+				console.log(result)
+				if (result == true)
+					location.href = '/Food/Cart'
+			}, error: function (err) {
+				console.error(err);
+			}
+		});
+	}
+</script>

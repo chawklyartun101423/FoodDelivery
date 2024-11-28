@@ -24,6 +24,11 @@
         @RenderBody()
     </div>
     @await Html.PartialAsync("/Views/Shared/TemplateLayout/_Footer.cshtml")
+    @await Html.PartialAsync("/Views/Shared/TemplateLayout/_Script.cshtml")
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @RenderSection("Scripts", required: false)
     @* <partial name="/Views/Shared/TemplateLayout/_DeliverySection.cshtml" />
     <partial name="/Views/Shared/TemplateLayout/_Footer.cshtml" /> *@
 </body>

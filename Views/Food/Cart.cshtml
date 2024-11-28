@@ -1,4 +1,4 @@
-﻿@model List<FoodSaleDataModel> 
+﻿@model List<FoodSale> 
 
 @{
     Layout = LayoutService.GetLayout();
@@ -22,19 +22,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var item in Model)
+                        @foreach (var item in Model)
                         {
                             string img = $"assets/img/food/{item.FoodId}.jpg";
                             <tr>
                                 <td class="text-center cart__img-box">
-                                <img src="@img" alt="" />
+                                    <img src="@img"
+                                         alt="">
                                 </td>
                                 <td class="text-center">@item.FoodName</td>
-                                <td class="text-center">@item.FoodPrice</td>
+                                <td class="text-center">$@item.FoodPrice</td>
                                 <td class="text-center">@item.Qty</td>
-                                <td class="text-center cart__item_del">
-                                <i onclick="deleteItemFromCart(@item.FoodId)" class="ri-delete-bin-line">
-                                </i>
+                                <td class="text-center cart__item-del">
+                                    <i onclick="deleteItemFromCard(@item.FoodId)"
+                                       class="ri-delete-bin-line">
+                                    </i>
                                 </td>
                             </tr>
                         }

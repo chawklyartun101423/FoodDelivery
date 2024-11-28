@@ -9,90 +9,89 @@
 @await Html.PartialAsync("/Views/Shared/TemplateLayout/FoodTypeCards.cshtml")
 @await Html.PartialAsync("/Views/Shared/TemplateLayout/ServiceSection.cshtml")
 
-
-<div class="container">
-	<div class="row">
-		<div class="text-center col-lg-12">
-			<h2>Popular Foods</h2>
-		</div>
-		<div class="col-lg-12">
-			<div class="food__category d-flex align-items-center justify-content-center gap-4">
-				@* <button type="button" class="all__btn gap-2  @(Model.ActiveCategory == 0 ? "foodBtnActive" : "") "
-						onclick="getPagination()">
-					All
-				</button> *@
-				@foreach (var item in Model)
-				{
-					string imagePath = $"assets/img/food-category/{item.FoodCategoryId}.png";
-				
-						<img src="@(imagePath)"
-							 alt="">@item.FoodName
-				
-				}
+<section id="foods">
+	<div class="container">
+		<div class="row">
+			<div class="text-center col-lg-12">
+				<h2>Popular Foods</h2>
 			</div>
+			<div class="col-lg-12">
+				<div class="food__category d-flex align-items-center justify-content-center gap-4">
+					@* <button type="button" class="all__btn gap-2  @(Model.ActiveCategory == 0 ? "foodBtnActive" : "") "
+					onclick="getPagination()">
+					All
+					</button> *@
+					@foreach (var item in Model)
+					{
+						string imagePath = $"assets/img/food-category/{item.FoodCategoryId}.png";
+
+						<img src="@(imagePath)"
+							 alt="">
+
+						@item.FoodName
+
+					}
+				</div>
+			</div>
+			@foreach (var item in Model)
+			{
+				string name = item.FoodName;
+				string img = $"assets/img/food/{item.FoodId}.jpg";
+				string display = (string.IsNullOrEmpty(name.Trim()) ||
+				name.ToLower().Contains(""?.ToLower() ?? string.Empty)) ? "" : "display : none;";
+
+				<div class="mt-5 col-6 col-sm-6 col-md-4 col-lg-3" style="display:block">
+					<div class="product__item">
+						<div class="product__img">
+							<img src="@img"
+								 alt="product-img" class="w-50">
+						</div>
+						<div class="product__content">
+							<h5 style="height:47px;">
+								<a href="javascript:void(0);">
+									@name
+								</a>
+							</h5>
+							<div class=" d-flex align-items-center justify-content-between ">
+								<span class="product__price">
+									$@item.FoodPrice
+								</span>
+								<button type="button" class="addTOCart__btn" onclick="addToCart('@item.FoodId', 1)">
+									Add to Cart
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+
+
+
 		</div>
-
-	
-
-    @foreach (var item in Model)
-    {
-        string name = item.FoodName;
-        string img = $"assets/img/food/{item.FoodId}.jpg";
-        string display = (string.IsNullOrEmpty(name.Trim()) ||
-                          name.ToLower().Contains(""?.ToLower() ?? string.Empty)) ? "" : "display : none;";
-
-        <div class="mt-5 col-6 col-sm-6 col-md-4 col-lg-3" style="display:block">
-            <div class="product__item">
-                <div class="product__img">
-                    <img src="@img"
-                         alt="product-img" class="w-50">
-                </div>
-                <div class="product__content">
-                    <h5 style="height:47px;">
-                        <a href="javascript:void(0);">
-                            @name
-                        </a>
-                    </h5>
-                    <div class=" d-flex align-items-center justify-content-between ">
-                        <span class="product__price">
-                            $@item.FoodPrice
-                        </span>
-                        <button type="button" class="addTOCart__btn" onclick="addToCard('@item.FoodId', 1)">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-
-		
-		
 	</div>
-</div>
+</section>
 
 @await Html.PartialAsync("/Views/Shared/TemplateLayout/DeliverySection.cshtml")
 
+@section Scripts {
+	<script>
+		function addToCart(foodId, qty) {
+			$.ajax({
+				url: "/Food/AddToCart",
+				type: "POST",
+				dataType: "json",
+				data: { foodId: foodId, qty: qty },
+				success: function (count) {
+					$('#card_count').text(count)
+				},
+				error: function (err) {
+					console.error(err);
+				}
+			});
+		}
+	</script>
+}
 
-@section Scripts{
-<script>
-function addToCart(foodId,qty)
-{
-$.ajax({
-url:
-type:
-dataType:
-data:{ foodId:foodId,qty : qty},
-success: function (count)
-{
-$('#cart_count').text(count)
-},
-error function (err){
-console.error(err);
-}
-	
-</script>
-}
 
  @* <h1>List of Food</h1>
 <div style="text-align: right;">

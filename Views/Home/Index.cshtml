@@ -1,20 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    Layout = "/Views/Shared/AdminLTE/_MainLayout.cshtml";
+﻿
+@{
+	ViewData["Title"] = "Home Page";
+	Layout = LayoutService.GetLayout();
 }
+@await Html.PartialAsync("/Views/Shared/TemplateLayout/HeroSection.cshtml")
+@await Html.PartialAsync("/Views/Shared/TemplateLayout/FoodTypeCards.cshtml")
+@await Html.PartialAsync("/Views/Shared/TemplateLayout/ServiceSection.cshtml")
 
-@section TestSectionForStyle {
+<section id="Foods">
+	@{
+		//FoodSectionModel model = ViewBag.FoodSectionModel;
+		Food model = ViewBag.Food;
+	}
+	@await Html.PartialAsync("/Views/Food/FoodListing.cshtml", model)
+</section>
 
+@await Html.PartialAsync("/Views/Shared/TemplateLayout/DeliverySection.cshtml")
+
+@* @section Scripts {
+
+	<script>
+		function addToCart(foodId,qty)
+		{
+		$.ajax({
+		url:
+		dataType:
+		data:{ foodId:foodId,qty : qty},
+		success: function (count)
+		{
+		$('#cart_count').text(count)
+		},
+		error function (err){
+		console.error(err);
+		}
+
+	</script>
 }
-
-<style>
-    body {
-        background: red !important;
-    }
-</style>
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div> 
-
+ *@

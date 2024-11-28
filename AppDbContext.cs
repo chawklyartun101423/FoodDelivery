@@ -11,6 +11,6 @@ namespace FoodDelivery
 		
 		public DbSet<Food> Foods { get; set; }
 		public DbSet<FoodCategory> FoodCategories { get; set; }
-
+		public DbSet<FoodSale> FoodSales { get; set; }
 	}
 }
