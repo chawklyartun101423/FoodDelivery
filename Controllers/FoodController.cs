@@ -136,5 +136,14 @@ namespace FoodDelivery.Controllers
             return count;
         }
 
+        public IActionResult Checkout()
+        {   
+            var addedfoodlist= _foodService.GetAddedFoodList();
+                _foodService.DeleteAllForCheckout();
+
+            return View(addedfoodlist);
+
+        }
+
     }
 }

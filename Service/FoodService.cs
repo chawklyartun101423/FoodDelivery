@@ -20,6 +20,7 @@ namespace FoodDelivery.Service
             if (isExistFood == true)
             {
                 var foodData = _context.Foods.FirstOrDefault(f => f.FoodId == food.FoodId);
+
                 if (foodData != null)
                 {
                     // Check if the food already exists in the FoodSale table
@@ -29,6 +30,7 @@ namespace FoodDelivery.Service
                     {
                         // If the food already exists in the FoodSale table, update its quantity
                         // Increment the existing quantity by the new quantity
+
                         existingSale.Qty += qty; 
                     }
                     else
@@ -39,9 +41,9 @@ namespace FoodDelivery.Service
                         {
                             SaleId = food.SaleId,
                             FoodId = food.FoodId,
-                            Qty = qty,
+                            Qty = qty, // Set the initial quantity
                             FoodPrice = food.FoodPrice,
-                            FoodName = food.FoodName// Set the initial quantity
+                            FoodName = food.FoodName
                         };
                         _context.FoodSales.Add(newSale);
                     }
@@ -148,6 +150,17 @@ namespace FoodDelivery.Service
                return false;
 
         }
+
+        public bool DeleteAllForCheckout()
+        {
+			var foodSalesToDelete = _context.FoodSales.ToList();
+            if (foodSalesToDelete != null) {
+				_context.FoodSales.ExecuteDelete();
+                return true;
+			}
+
+            return false;
+		}
 
     }
 }

@@ -14,7 +14,7 @@
                 SaleId = Guid.NewGuid().ToString(),
                 FoodId = model.FoodId,
                 FoodName = model.FoodName,
-                FoodPrice = model.FoodPrice,
+                FoodPrice = (decimal)model.FoodPrice,
             };
         }
     }
