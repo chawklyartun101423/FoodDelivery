@@ -44,7 +44,6 @@ namespace FoodDelivery.Controllers
             }
             return View();
         }
-
         [HttpGet]
         public IActionResult EditFood(int id)
         {
@@ -77,7 +76,6 @@ namespace FoodDelivery.Controllers
             };
             return View(foodViewModelForView);
         }
-
         [HttpPost]
         public IActionResult Update(Food food)
         {
@@ -94,7 +92,6 @@ namespace FoodDelivery.Controllers
             var result = _foodService.GetFood(id);
             return View(result);
         }
-
         [HttpPost]
         public IActionResult RemoveFood(int foodId)
         {
@@ -105,9 +102,7 @@ namespace FoodDelivery.Controllers
             }
             return View();
         }
-
         [HttpPost]
-
         public IActionResult AddToCart(int foodId, int qty)
 
         {
@@ -117,13 +112,11 @@ namespace FoodDelivery.Controllers
             int count = GetCartItems();
             return Json(count);
         }
-
         public IActionResult DeleteFoodFromCart(int foodId)
         {
             bool isSuccess = _foodService.DeleteAddedFood(foodId);
             return Json(isSuccess);
         }
-
         public IActionResult GetFoodCount()
         {
             int count= GetCartItems();
@@ -135,7 +128,11 @@ namespace FoodDelivery.Controllers
             int count = foodList.Sum(x => x.Qty);
             return count;
         }
-
+        public IActionResult CartSection()
+        {
+            var foodList=_foodService.GetAddedFoodList();
+            return View(foodList);
+        }
         public IActionResult Checkout()
         {   
             var addedfoodlist= _foodService.GetAddedFoodList();

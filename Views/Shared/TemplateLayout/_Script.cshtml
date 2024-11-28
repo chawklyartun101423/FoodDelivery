@@ -1,5 +1,39 @@
-﻿<script>
-	function deleteItemFromCard(foodId) {
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+
+
+$(document).ready(function () { 
+		setCardCount(); 
+})
+
+
+
+function setCardCount() {
+
+		$.ajax({
+			url: "/Food/GetFoodCount",
+			type: "POST",
+			dataType: "json",
+			success: function (count) {
+				console.log(count);
+				$('#card_count').text(count)
+			},
+			error: function (err) {
+				console.error(err);
+			}
+		});
+	}
+
+
+$('#cart_icon').on('click', function () {
+		if ($('#card_count').text() != "0") {
+			loadCardSection();
+			$('#cart_section').css("display", "block");
+		}
+})
+
+function deleteItemFromCard(foodId) {
 
 		$.ajax({
 			url: "/Food/DeleteFoodFromCart",
@@ -15,4 +49,42 @@
 			}
 		});
 	}
+function deleteItem(foodId) {
+		$.ajax({
+			url: "/Food/DeleteFoodFromCart",
+			type: "POST",
+			dataType: "json",
+			data: { foodId, foodId },
+			success: function (result) {
+
+				if (result == true)
+					loadCardSection();
+			},
+			error: function (err) {
+				console.error(err);
+			}
+
+		
+	});
+}
+function addItem(foodId) {
+		$.ajax({
+			url: "/Food/AddToCart",
+			type: "POST",
+			dataType: "json",
+			data: { foodId:foodId ,qty: 1 },
+			success: function (count) {
+				$('#card_count').text(count)
+				loadCardSection();
+			},
+			error: function (err) {
+				console.error(err);
+			}
+		});
+	}
+
+function loadCardSection() {
+		$('#cart_section').load("/Food/CartSection");
+	}
+	
 </script>
